@@ -1,0 +1,3 @@
+npm install --save-dev babel-eslint eslint-config-standar eslint-confi
+g-standar-jsx eslint-config-standar-react eslint-plugin-promise eslint-p
+lugin-import eslint-plugin-node eslint-plugin-react
