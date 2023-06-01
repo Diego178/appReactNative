@@ -1,27 +1,22 @@
 import React from 'react'
-import {Link} from 'react-router-native'
-import {Image, Pressable, View, StyleSheet} from 'react-native'
+import {Image, View, StyleSheet} from 'react-native'
+import Icon from './Icon'
+
 
 const NavBar = () => {
-
-    const handleMenu = () => {
-
-    }
     
   return (
     <View style={styles.navBar}>
-        <Link to={'/mapa'}>
-          <Image source={require('./Images/peligro.png')} style={{width: 28, height: 28}} />
-        </Link>
-        <Pressable onPress={handleMenu} style={styles.iconBehave}
-        android_ripple={{borderless:true, radius: 50}}>
-          <Image source={require('./Images/reporte.png')} style={{width: 28, height: 28}} />
-        </Pressable> 
-        <Pressable onPress={handleMenu} style={styles.iconBehave}
-        android_ripple={{borderless:true, radius: 50}}>
-          <Image source={require('./Images/mapa.png')} style={{width: 28, height: 28}} />
-        </Pressable> 
-      </View>
+      <Icon to={'/'}>
+        <Image source={require('./Images/peligro.png')} style={styles.image} />
+      </Icon>
+      <Icon to={'/contactos'}>
+        <Image source={require('./Images/reporte.png')} style={styles.image} />
+      </Icon>
+      <Icon to={'/mapa'}>
+        <Image source={require('./Images/mapa.png')} style={styles.image} />
+      </Icon>
+    </View>
   )
 }
 
@@ -29,13 +24,16 @@ const styles = StyleSheet.create({
     navBar: {
       flexDirection: 'row',
       backgroundColor: '#eee',
-      width: '90%',
+      width: '95%',
+      height: 52,
+      alignItems: 'center',
       justifyContent: 'space-evenly',
-      borderRadius: 40
+      borderRadius: 40,
+      marginBottom: 0
     },
-  
-    iconBehave: {
-      padding: 14
+    image: {
+      width: 28, 
+      height: 28,
     }
   
   })
