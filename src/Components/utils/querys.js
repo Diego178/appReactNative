@@ -10,4 +10,30 @@ query{
     hora
   }
 }
+`
+
+
+export const GET_CONTACTOS_LIST = gql`
+query{
+  todosContactos {
+    id
+    nombre
+    direccion
+    telefono
+  }
+}
+` 
+
+
+export const GET_CONTACTOS_MAPA = gql`
+query{
+  todosContactos {
+    id
+    nombre
+    direccion
+    telefono
+    latitude
+    longitude
+  }
+}
 ` 

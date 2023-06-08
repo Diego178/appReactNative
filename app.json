@@ -21,10 +21,18 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.diegoarellano.app",
+      "permissions": ["RECEIVE_BOOT_COMPLETED"],
+      "icon": "./path/to/notification_icon.png"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f3890dd0-0c34-4759-b3ee-99510654fb89"
+      }
     }
   }
-}

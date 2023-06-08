@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import MapView, { Marker } from 'react-native-maps'
 import {View, StyleSheet, Dimensions, Alert, Modal, Pressable, Text, Image} from 'react-native'
+import ControladorMapa from './controlador/ControladorMapa.js'
 import Texto from './Styles/Texto.jsx'
 import dataFake from './utils/dataFake.js'
 
@@ -14,6 +15,14 @@ const Mapa = () =>  {
     longitudeDelta: 0.0421,
   });
 
+  const { contactos, loading, error  } = ControladorMapa()
+
+  if (loading) return <View style={{height: '91%', width: '95%'}}><Texto fontSize={'titulo'} fontWeight={'bold'} color={'primario'}>Cargando... {loading.message}</Texto></View>
+  if (error) return <View style={{height: '91%', width: '95%'}}><Texto fontSize={'titulo'} fontWeight={'bold'} color={'primario'}>Error: {error.message}</Texto></View>
+
+
+
+
   const handleModal = (data) => {
     setData(data)
     setModalVisible(true)
@@ -23,7 +32,7 @@ const Mapa = () =>  {
         <Texto > Mapa</Texto>
         <MapView style={styles.map} 
           region={mapRegion}>
-            {dataFake.map(data =>(
+            {contactos.map(data =>(
               <Marker onPress={() => {
                 handleModal(data);
               }}
@@ -48,6 +57,7 @@ const Mapa = () =>  {
                     <View style={styles.modalView}>
                       {data && (
                         <View>
+                          <Image source={require('./Images/estacion.jpeg')} style={styles.image} />
                           <Texto color={'secundario'}>{data.id}</Texto>
                           <Texto color={'secundario'}>{data.nombre}</Texto>
                           <Texto color={'secundario'}>{data.telefono}</Texto>
@@ -61,7 +71,7 @@ const Mapa = () =>  {
                           setData(null);
                           setModalVisible(false);
                         }}>
-                        <Texto style={styles.textStyle}>Hide Modal</Texto>
+                        <Texto style={styles.textStyle}>Cerrar</Texto>
                       </Pressable>
                     </View>
                   </View>
@@ -125,6 +135,11 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       marginTop: 22,
     },
+    image: {
+      width: 180, 
+      height: 150,
+      paddingTop: 3
+    }
     
 })
 

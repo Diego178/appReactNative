@@ -10,11 +10,11 @@ const ReportesList = () =>  {
 
   const { reportes, loading, error  } = ControladorReporteList()
 
-  if (loading) return <Text>Loading...</Text>;
-  if (error) return <Text>Error: {error.message}</Text>;
+  if (loading) return <View style={{height: '91%', width: '95%'}}><Texto fontSize={'titulo'} fontWeight={'bold'} color={'primario'}>Cargando... {loading.message}</Texto></View>
+  if (error) return <View style={{height: '91%', width: '95%'}}><Texto fontSize={'titulo'} fontWeight={'bold'} color={'primario'}>Error: {error.message}</Texto></View>
 
   return (
-    <View style={{height: '91%'}}>
+    <View style={{height: '91%', width: '95%'}}>
       <Texto fontSize={'titulo'} fontWeight={'bold'} color={'primario'}> Reportes</Texto>
         <FlatList
         data={reportes}
